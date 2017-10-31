@@ -1,16 +1,16 @@
-const _ = require('lodash')
-const express = require('express')
+const _ = require("lodash")
+const express = require("express")
 
 let app = express()
-app.use('/public', express.static(__dirname + '/public'))
-app.set('views', __dirname + '/views')
-app.set('view engine', 'twig');
-app.set('twig options', {
+app.use("/public", express.static(__dirname + "/public"))
+app.set("views", __dirname + "/views")
+app.set("view engine", "twig")
+app.set("twig options", {
   strict_variables: false
-});
+})
 
-app.get('/', (req, res) => {
-  res.render('index', {})
+app.get("/", (req, res) => {
+  res.render("index", {})
 })
 
 app.listen(3000, () => {

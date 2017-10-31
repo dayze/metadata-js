@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="metadata TP">
+    <meta name="author" content="Maxime Lainé, Solène Dorey, Habit Jérémy">
+    <link rel="icon" type="image/x-icon" href=""/>
+
+    <title>{% block title %}{% endblock %}: Metadata TP</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/public/css/vendors/magic-monkey.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/public/css/main.css">
+
+</head>
+<body>
+
+
+<div id="footerPusher">
+
+    <!-- @@@ HEADER @@@ -->
+    <header class="row flex-x-center align-center">
+        <div class="cell-12 anim-fall">
+            <h1 class="margin-0-bottom txt-size-giant txt-size-big-s">
+                <a href="/" title="Homepage" class="hover-color-peter-river transition">
+                    <span class="APP_font_obelix">the next manga</span>
+                    <span class="hide-s">
+                <span class="color-orange">?#@!</span>
+            </span>
+                </a>
+            </h1>
+        </div>
+        <div class="cell-8 c-10-xl c-12-l anim-fall">
+            <form action="/animes/name/" method="GET">
+                <input class="width-60 width-50-m width-100-s padding border border-silver margin-15-top-xs"
+                       id="inputSearch" name="query" type="search" title="Type the name of a manga"
+                       placeholder="One Piece ..." autofocus/><!--
+        -->
+                <input type="submit" id="searchBtn" title="Launch the research" value="Search"
+                       class="margin-30-top-s border-none color-yang transition-3 bg-orange hover-bg-carrot padding-5 padding-15-right-left">
+                </input>
+            </form>
+
+        </div>
+    </header>
+
+
+    <!-- @@@@@ MAIN @@@@@ -->
+
+    <main class="margin-auto container margin-50-top-bottom">
+        {% block body %} {% endblock %}
+    </main>
+
+</div>
+
+
+<!-- @@@ FOOTER @@@ -->
+
+<footer class="row">
+    <div class="cell-12-margin-0 align-center color-silver padding-30 bg-yin">
+        <ul class="list-unstyled list-inline list-separator list-no-separator-s list-block-s">
+            <li>Realized by <span class="color-orange">Habit Jérémy</span> & <span
+                        class="color-orange">Maxime Lainé</span>
+            </li>
+            <li>
+                <a class="txt-i txt-underline hover-color-asbestos" href="http://www.mangaeden.com/api/" target="_blank"
+                   title="Link to the MangaEden API">
+                    MangaEden API
+                </a>
+            </li>
+            <li>M2 - DNR2i</li>
+            <li>2017/2018</li>
+        </ul>
+    </div>
+</footer>
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>

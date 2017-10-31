@@ -1,1 +1,30 @@
-<img src="/public/images/Chicago_lighthouse.jpg" alt="">
+{% extends "base.twig" %}
+{% block body %}
+    <div class="row flex-y-center flex-x-around">
+        <div class="cell-6 c-4-m hide-s anim-forward">
+            <figure>
+                <img class="responsive-img" src="/public/img/Naruto-shippuden-ultimate-ninja-blazing.png" alt="Naruto png"/>
+            </figure>
+        </div>
+        <div class="cell- anim-backward padding round-50">
+            <h2 class="APP_font_obelix align-center margin-50-bottom">
+                <span>welcome</span>
+                <span class="color-orange">!</span>
+            </h2>
+            <h3 class="color-orange">What's this web app ?</h3>
+            <p>
+                This little web application helps you to find the next manga that you may like the kind and
+                therefore the next manga you will read.
+            </p>
+            <h3 class="color-orange">
+                How it's work ?
+            </h3>
+            <p>
+                It's easy ! First, what you have to do it's to type the name of a manga that you like the kind
+                in the search bar above. Next, a maximum of 10 mangas will be recommended to you. These last mangas
+                are suggested according to their kind in common with the searched manga and also to their
+                popularity.
+            </p>
+        </div>
+    </div>
+{% endblock %}
