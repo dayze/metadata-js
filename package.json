@@ -9,6 +9,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "twig": "^1.10.5"
   }
 }
