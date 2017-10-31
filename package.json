@@ -10,6 +10,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.16.2",
+    "file-extension": "^3.1.2",
     "lodash": "^4.17.4",
     "node-exiftool": "^2.3.0",
     "twig": "^1.10.5",
