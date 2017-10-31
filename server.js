@@ -2,7 +2,7 @@ const _ = require('lodash')
 const express = require('express')
 
 let app = express()
-
+app.use('/public', express.static(__dirname + '/public'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'twig');
 app.set('twig options', {
