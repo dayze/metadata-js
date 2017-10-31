@@ -12,6 +12,8 @@
   "dependencies": {
     "express": "^4.16.2",
     "lodash": "^4.17.4",
-    "twig": "^1.10.5"
+    "node-exiftool": "^2.3.0",
+    "twig": "^1.10.5",
+    "uniqid": "^4.1.1"
   }
 }
