@@ -14,15 +14,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/detail/:id', (req, res) => {
-
+  res.render('detail', {})
 })
 
 app.get('/upload', (req, res) => {
-
+  res.render('upload', {})
 })
 
-app.get('/documentatin', (req, res) => {
-
+app.get('/documentation', (req, res) => {
+  res.render('documentation', {})
 })
 
 
