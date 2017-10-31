@@ -13,6 +13,19 @@ app.get('/', (req, res) => {
   res.render('index', {})
 })
 
+app.get('/detail/:id', (req, res) => {
+
+})
+
+app.get('/upload', (req, res) => {
+
+})
+
+app.get('/documentatin', (req, res) => {
+
+})
+
+
 app.listen(3000, () => {
   console.log(`Starting on 3000`)
 })
