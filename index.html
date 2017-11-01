@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="metadata TP">
-    <meta name="author" content="Maxime Lainé, Solène Dorey, Habit Jérémy">
+    <meta name="description" content="tp d3">
+    <meta name="author" content="Habit Jérémy">
     <link rel="icon" type="image/x-icon" href=""/>
 
-    <title>{% block title %}{% endblock %}: Metadata Js</title>
+    <title>Manga</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="/public/css/vendors/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="/public/css/vendors/magic-monkey.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="public/css/vendors/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="public/css/vendors/magic-monkey.min.css" type="text/css"/>
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/columns-masonry.css">
     <link rel="stylesheet"
           href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
-    {% block css %}{% endblock %}
 
 </head>
 <body>
+
 
 <!-- @@@ HEADER @@@ -->
 <header id="header" class="fixed-column-left border-3-right border-silver padding border-none-right-s">
@@ -29,10 +30,8 @@
     <div class="row align-center">
         <div class="cell-12">
             <h1 class="margin-0-top txt-size-jumbo txt-size-giant-s txt-size-big-xs txt-capitalize txt-unset">
-                <a href="/" class="inline-block" title="Accueil">
-                    <span class="color-amethyst">metadata</span>
-                    <span>js</span>
-                </a>
+                <span class="color-amethyst">metadata</span>
+                <span>js</span>
             </h1>
         </div>
     </div>
@@ -91,11 +90,34 @@
 
 <!-- @@@@@ MAIN @@@@@ -->
 
-{% block body %}{% endblock %}
+<main class="bg-clouds anim-fall overlay">
+
+    <ul class="columns-masonry">
+
+        <li class="overlay">
+            <a href="" title="" class="block">
+                <img src="public/images/Detroit.jpg" alt=""/>
+                <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                    <h3 class="margin-0 color-amethyst">Titre</h3>
+                    <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                        La page de
+                        détails d'une
+                        image affiche l'image et les métadonnées qu'elle contient. Les
+                        métadonnées sont extraites de l'image avec exiftool, et les informations de la page web doivent
+                        inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une image
+                        affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de l'image
+                        avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                        Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les métadonnées
+                        qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les informations
+                        de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                    <span class="color-silver">Auteur</span>
+                </div>
+            </a>
+        </li>
 
 
-{% block script %}
-{% endblock %}
+    </ul>
+</main>
 
 </body>
 </html>

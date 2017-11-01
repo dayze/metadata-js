@@ -1,30 +1,230 @@
 {% extends "base.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/public/css/columns-masonry.css">
+{% endblock %}
+
 {% block body %}
-    <div class="row flex-y-center flex-x-around">
-        <div class="cell-6 c-4-m hide-s anim-forward">
-            <figure>
-                <img class="responsive-img" src="/public/img/Naruto-shippuden-ultimate-ninja-blazing.png" alt="Naruto png"/>
-            </figure>
-        </div>
-        <div class="cell- anim-backward padding round-50">
-            <h2 class="APP_font_obelix align-center margin-50-bottom">
-                <span>welcome</span>
-                <span class="color-orange">!</span>
-            </h2>
-            <h3 class="color-orange">What's this web app ?</h3>
-            <p>
-                This little web application helps you to find the next manga that you may like the kind and
-                therefore the next manga you will read.
-            </p>
-            <h3 class="color-orange">
-                How it's work ?
-            </h3>
-            <p>
-                It's easy ! First, what you have to do it's to type the name of a manga that you like the kind
-                in the search bar above. Next, a maximum of 10 mangas will be recommended to you. These last mangas
-                are suggested according to their kind in common with the searched manga and also to their
-                popularity.
-            </p>
-        </div>
-    </div>
+    <main class="anim-fall overlay">
+
+        <ul class="columns-masonry">
+
+            {# @@@ FOR EACH IMAGES  => do this #}
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="public/images/Detroit.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            {# @@@ END FOR EACH #}
+
+            {# dump examples #}
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="public/images/Detroit.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="/public/images/MIT_Stata_center.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="/public/images/Mountain_View_Googleplex.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="public/images/Grand_Canyon_National_Park.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="public/images/Cupertino_Apple.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="public/images/Dallas.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="overlay">
+                <a href="" title="" class="block">
+                    <img src="public/images/Yosemite_National_park.jpg" alt=""/>
+                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
+                        <h3 class="margin-0 color-amethyst">Titre</h3>
+                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                            La page de
+                            détails d'une
+                            image affiche l'image et les métadonnées qu'elle contient. Les
+                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
+                            doivent
+                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
+                            image
+                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
+                            l'image
+                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
+                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
+                            métadonnées
+                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
+                            informations
+                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
+                        <span class="color-silver">Auteur</span>
+                    </div>
+                </a>
+            </li>
+
+
+        </ul>
+    </main>
 {% endblock %}
