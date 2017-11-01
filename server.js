@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
       resolve(exifsInfo)
     })
   }).then((exifsInfo) => {
-    res.render('index', exifsInfo)
+    res.render('index', {exifsInfo})
   })
 })
 
@@ -54,8 +54,8 @@ app.get('/detail/:id', (req, res) => {
       }
       resolve(exifInfo)
     })
-  }).then((exifInfos) => {
-    Object.keys(exifInfos).length !== 0 ? res.render('detail', exifInfos) : res.render('detail', {error: true})
+  }).then((exifInfo) => {
+    Object.keys(exifInfo).length !== 0 ? res.render('detail', {exifInfo}) : res.render('detail', {exifInfo: {error: true}})
   }).catch((e) => {
     console.log(e)
   })
