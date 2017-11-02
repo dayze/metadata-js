@@ -22,14 +22,16 @@ app.set("twig options", {
   strict_variables: false
 })
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => { //add uniqid + generer fichier json image
   new Promise((resolve) => {
     fs.readdir("public/images", (err, files) => {
       let exifsInfo = []
       for (let file of files) {
         let extension = fileExtension(file)
         if (extension === "json") {
-          exifsInfo.push(exif.getExifFromFile(`${imagesRoot}/${file}`))
+          let exifInfo = exif.getExifFromFile(`${imagesRoot}/${file}`)
+          exifInfo.data.id = path.basename(file, `.${extension}`)
+          exifsInfo.push(exifInfo)
         }
       }
       resolve(exifsInfo)
