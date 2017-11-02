@@ -5,36 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="metadata TP">
-    <meta name="author" content="Maxime Lainé, Solène Dorey, Habit Jérémy">
+    <meta name="description" content="tp d3">
+    <meta name="author" content="Habit Jérémy">
     <link rel="icon" type="image/x-icon" href=""/>
 
-    <title>{% block title %}{% endblock %} : Meta Data Js</title>
+    <title>Manga</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="/public/css/vendors/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="/public/css/vendors/magic-monkey.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/public/css/main.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/vendors/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="../public/css/vendors/magic-monkey.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/columns-masonry.css">
     <link rel="stylesheet"
-          href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
-          type="text/css">
-    {% block css %}{% endblock %}
+          href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
 
 </head>
 <body>
 
+
 <!-- @@@ HEADER @@@ -->
-<header id="header"
-        class="fixed-column-left padding-50 border-right border-silver border-none-right-l border-bottom-l bg-yang">
+<header id="header" class="fixed-column-left padding-50 border-right border-silver border-none-right-s bg-yang">
 
     <!-- title -->
     <div class="row align-center">
         <div class="cell-12">
             <h1 class="margin-0-top txt-size-jumbo txt-size-giant-xl txt-size-bigs txt-capitalize txt-unset">
-                <a href="/" class="inline-block" title="Accueil">
-                    <span class="color-amethyst">meta data</span>
-                    <span>js</span>
-                </a>
+                <span class="color-amethyst">meta data</span>
+                <span>js</span>
             </h1>
         </div>
     </div>
@@ -45,8 +42,7 @@
             <a href="" title="Ajouter une image" class="block bg-amethyst hover-bg-wisteria padding transition-2">Ajouter</a>
         </div>
         <div class="cell-6 align-center">
-            <a href="/page-technique" title="Page technique" class="block bg-silver hover-bg-concrete padding transition-2">Page
-                technique</a>
+            <a href="" title="A propos" class="block bg-silver hover-bg-concrete padding transition-2">A propos</a>
         </div>
     </div>
 
@@ -79,7 +75,7 @@
         <!-- GITHUB-->
         <div class="row margin-50-top">
             <div class="cell-12 align-center anim-forward">
-                <a class="inline-block txt-size-jumbo padding round border hover-border-silver transition-2"
+                <a class="txt-size-jumbo padding round border hover-border-silver transition-2"
                    href="https://github.com/dayze/metadata-js"
                    title="Metadata js GitHub" target="_blank">
                     <i class="devicon-github-plain-wordmark colored"></i>
@@ -93,11 +89,29 @@
 
 <!-- @@@@@ MAIN @@@@@ -->
 
-{% block body %}{% endblock %}
+<main>
 
-
-{% block script %}
-{% endblock %}
+    <div class="row padding-50 align-center border-bottom border-silver">
+        <div class="cell-12 anim-fall">
+            <h1 class="margin-0 txt-size-big txt-unset">
+                <span class="color-amethyst">&#10022;</span>
+                <span>Page technique</span>
+            </h1>
+        </div>
+    </div>
+    <section class="overlay anim-climb container margin-auto margin-50-top">
+        <div class="row">
+            <div class="cell-12">
+                <h2 class="margin-0-top txt-unset">Technologies utilisées</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell-12">
+                <h2 class="margin-0-top txt-unset">Difficultés rencontrées</h2>
+            </div>
+        </div>
+    </section>
+</main>
 
 </body>
 </html>

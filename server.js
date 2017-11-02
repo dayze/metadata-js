@@ -67,8 +67,8 @@ app.get("/upload", (req, res) => {
   res.render("upload", {})
 })
 
-app.get("/documentation", (req, res) => {
-  res.render("documentation", {})
+app.get("/page-technique", (req, res) => {
+  res.render("technique_page", {})
 })
 
 app.listen(3000, () => {
