@@ -2,60 +2,80 @@
 
 {% block title %}Détails d'une image{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="/public/css/pages/error.css" type="text/css">
+{% endblock %}
+
 {% block body %}
 
 
     <main>
-        <div class="row-column-reverse-xl flex-y-center">
-            <div class="cell-5 bg-yang padding-50 padding-30-s anim-fall">
-                <h2 class="margin-0-top txt-unset color-amethyst txt-size-big align-center-s">
-                    {{ exifInfo.data[0].Title ?: "* Titre *" }}
-                </h2>
-                <p class="txt-i margin-50-top">
-                    {{ exifInfo.data[0].Description ?: "* Description *" }}
-                </p>
-                <ul class="list-unstyled align-center-xs">
-                    <li class="padding">
-                        <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}"
-                           href="/{{ exifInfo.data[0].SourceFile }}"
-                           class="inline-block color-peter-river hover-color-turquoise"
-                           title="Téléchargez l'image">
-                            <img class="responsive-img hide-xs" src="../public/icons/image.png"
-                                 alt="Icon Téléchargement"/>
-                            <span class="margin-15-left margin-0-xs">Télécharger l'image</span>
-                        </a>
-                    </li>
-                    <li class="padding">
-                        <a download="XMP" href="" class="inline-block color-peter-river hover-color-turquoise"
-                           title="Téléchargez le fichier sidecar XMP">
-                            <img class="responsive-img hide-xs" src="../public/icons/file.png"
-                                 alt="Icon Téléchargement"/>
-                            <span class="margin-15-left margin-0-xs">Télécharger le fichier sidecar XMP</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="cell-7 align-center anim-backward">
-                <figure class="margin-50-top-l">
-                    <img class="responsive-img"
-                         src="/{{ exifInfo.data[0].SourceFile }}" alt=" {{ exifInfo.data[0].Title ?: "* Titre *" }}"/>
-                </figure>
-            </div>
-        </div>
-
-        <div class="row border-top border-silver">
-            <div class="cell-12-margin-0 padding-50 padding-30-s anim-climb bg-clouds">
-                <h2 class="margin-0-top txt-capitalize align-center">métadonnées</h2>
-                <ul class="list-unstyled txt-over-breakline">
-                    {% for metadataKey, metadataValue in exifInfo.data[0] %}
+        {% if exifInfo.error %}
+            {# ERROR CASE #}
+            <section id="errorContainer" class="overlay">
+                <div class="absolute-row-middle align-center color-yang">
+                    <h1 class="margin-0-top txt-size-giant">
+                        <span>Oups</span>
+                        <span class="color-amethyst">!</span>
+                    </h1>
+                    <h3 class="txt-unset">
+                        Il semble que l'image recherchée n'existe pas !
+                    </h3>
+                </div>
+            </section>
+        {% else %}
+            {# SUCCESS CASE #}
+            <div class="row-column-reverse-xl flex-y-center">
+                <div class="cell-5 bg-yang padding-50 padding-30-s anim-fall">
+                    <h2 class="margin-0-top txt-unset color-amethyst txt-size-big align-center-s">
+                        {{ exifInfo.data[0].Title ?: "* Titre *" }}
+                    </h2>
+                    <p class="txt-i margin-50-top">
+                        {{ exifInfo.data[0].Description ?: "* Description *" }}
+                    </p>
+                    <ul class="list-unstyled align-center-xs">
                         <li class="padding">
-                            <span class="txt-b">{{ metadataKey }}</span>
-                            <span>: {{ metadataValue }}</span>
+                            <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}"
+                               href="/{{ exifInfo.data[0].SourceFile }}"
+                               class="inline-block color-peter-river hover-color-turquoise"
+                               title="Téléchargez l'image">
+                                <img class="responsive-img hide-xs" src="../public/icons/image.png"
+                                     alt="Icon Téléchargement"/>
+                                <span class="margin-15-left margin-0-xs">Télécharger l'image</span>
+                            </a>
                         </li>
-                    {% endfor %}
-                </ul>
+                        <li class="padding">
+                            <a download="XMP" href="" class="inline-block color-peter-river hover-color-turquoise"
+                               title="Téléchargez le fichier sidecar XMP">
+                                <img class="responsive-img hide-xs" src="../public/icons/file.png"
+                                     alt="Icon Téléchargement"/>
+                                <span class="margin-15-left margin-0-xs">Télécharger le fichier sidecar XMP</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell-7 align-center anim-backward">
+                    <figure class="margin-50-top-l">
+                        <img class="responsive-img"
+                             src="/{{ exifInfo.data[0].SourceFile }}"
+                             alt=" {{ exifInfo.data[0].Title ?: "* Titre *" }}"/>
+                    </figure>
+                </div>
             </div>
-        </div>
 
+            <div class="row border-top border-silver">
+                <div class="cell-12-margin-0 padding-50 padding-30-s anim-climb bg-clouds">
+                    <h2 class="margin-0-top margin-50-bottom txt-capitalize align-center">métadonnées</h2>
+                    <ul class="list-unstyled txt-over-breakline">
+                        {% for metadataKey, metadataValue in exifInfo.data[0] %}
+                            <li class="padding">
+                                <span class="txt-b">{{ metadataKey }}</span>
+                                <span>: {{ metadataValue }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
     </main>
 {% endblock %}
