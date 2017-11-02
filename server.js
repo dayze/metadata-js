@@ -24,7 +24,7 @@ app.set("twig options", {
 
 app.get("/", (req, res) => { //add uniqid + generer fichier json image
   new Promise((resolve) => {
-    fs.readdir("public/images", (err, files) => {
+    fs.readdir(`${imagesRoot}`, (err, files) => {
       let exifsInfo = []
       for (let file of files) {
         let extension = fileExtension(file)
@@ -43,7 +43,7 @@ app.get("/", (req, res) => { //add uniqid + generer fichier json image
 
 app.get("/detail/:id", (req, res) => {
   new Promise((resolve) => {
-    fs.readdir("public/images", (err, files) => {
+    fs.readdir(`${imagesRoot}`, (err, files) => {
       let exifInfo = {}
       for (let file of files) {
         let extension = fileExtension(file)
