@@ -8,226 +8,112 @@
 
 {% block body %}
 
-
-    {{ dump(exifsInfo) }}
-
-    {{ exifsInfo }}
-    <main class="anim-fall overlay">
+    <main class="anim-fall overlay bg-clouds">
 
         <ul class="columns-masonry">
 
             {# @@@ FOR EACH IMAGES  => do this #}
 
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="public/images/prju13u8j9fx1trg.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
+            {% for image in exifsInfo %}
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="overlay">
+                    <a href="/detail/" title="Détails de l'image" class="block">
+                        <img src="{{ image.data[0].SourceFile }}"
+                             alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
+                        <div class="absolute-spread bg-yang-opac-9 padding">
+                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                                {{ image.data[0].Description ?: '* Description *' }}</p>
+                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
 
             {# @@@ END FOR EACH #}
-
-            {# dump examples #}
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="public/images/Detroit.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="/public/images/MIT_Stata_center.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="/public/images/Mountain_View_Googleplex.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="public/images/Grand_Canyon_National_Park.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="public/images/Cupertino_Apple.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="public/images/Dallas.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="overlay">
-                <a href="" title="" class="block">
-                    <img src="public/images/Yosemite_National_park.jpg" alt=""/>
-                    <div class="absolute-spread bg-yin-opac-8 color-yang padding">
-                        <h3 class="margin-0 color-amethyst">Titre</h3>
-                        <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
-                            La page de
-                            détails d'une
-                            image affiche l'image et les métadonnées qu'elle contient. Les
-                            métadonnées sont extraites de l'image avec exiftool, et les informations de la page web
-                            doivent
-                            inclure les Microdata, les données Open Graph et Twitter Cards.La page de détails d'une
-                            image
-                            affiche l'image et les métadonnées qu'elle contient. Les métadonnées sont extraites de
-                            l'image
-                            avec exiftool, et les informations de la page web doivent inclure les Microdata, les données
-                            Open Graph et Twitter Cards.La page de détails d'une image affiche l'image et les
-                            métadonnées
-                            qu'elle contient. Les métadonnées sont extraites de l'image avec exiftool, et les
-                            informations
-                            de la page web doivent inclure les Microdata, les données Open Graph et Twitter Cards.</p>
-                        <span class="color-silver">Auteur</span>
-                    </div>
-                </a>
-            </li>
 
 
         </ul>

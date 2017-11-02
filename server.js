@@ -1,18 +1,18 @@
 /* NODE MODULE
    ========================================================================== */
-const _ = require('lodash')
-const express = require('express')
-const fileExtension = require('file-extension')
-const path = require('path')
-const fs = require('fs')
+const _ = require("lodash")
+const express = require("express")
+const fileExtension = require("file-extension")
+const path = require("path")
+const fs = require("fs")
 
 /* PERSONNAL MODULE
    ========================================================================== */
-const exif = require('./modules/exif')
+const exif = require("./modules/exif")
 
 /* CONFIG
    ========================================================================== */
-require('./config')
+require("./config")
 
 let app = express()
 app.use("/public", express.static(__dirname + "/public"))
@@ -22,30 +22,30 @@ app.set("twig options", {
   strict_variables: false
 })
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   new Promise((resolve) => {
-    fs.readdir('public/images', (err, files) => {
+    fs.readdir("public/images", (err, files) => {
       let exifsInfo = []
       for (let file of files) {
         let extension = fileExtension(file)
-        if (extension === 'json') {
+        if (extension === "json") {
           exifsInfo.push(exif.getExifFromFile(`${imagesRoot}/${file}`))
         }
       }
       resolve(exifsInfo)
     })
   }).then((exifsInfo) => {
-    res.render('index', {exifsInfo})
+    res.render("index", {exifsInfo})
   })
 })
 
-app.get('/detail/:id', (req, res) => {
+app.get("/detail/:id", (req, res) => {
   new Promise((resolve) => {
-    fs.readdir('public/images', (err, files) => {
+    fs.readdir("public/images", (err, files) => {
       let exifInfo = {}
       for (let file of files) {
         let extension = fileExtension(file)
-        if (extension === 'json') {
+        if (extension === "json") {
           if (path.basename(file, `.${extension}`) === req.params.id) {
             exifInfo = exif.getExifFromFile(`${imagesRoot}/${file}`)
             break
@@ -55,18 +55,18 @@ app.get('/detail/:id', (req, res) => {
       resolve(exifInfo)
     })
   }).then((exifInfo) => {
-    Object.keys(exifInfo).length !== 0 ? res.render('detail', {exifInfo}) : res.render('detail', {exifInfo: {error: true}})
+    Object.keys(exifInfo).length !== 0 ? res.render("detail", {exifInfo}) : res.render("detail", {exifInfo: {error: true}})
   }).catch((e) => {
     console.log(e)
   })
 })
 
-app.get('/upload', (req, res) => {
-  res.render('upload', {})
+app.get("/upload", (req, res) => {
+  res.render("upload", {})
 })
 
-app.get('/documentation', (req, res) => {
-  res.render('documentation', {})
+app.get("/documentation", (req, res) => {
+  res.render("documentation", {})
 })
 
 app.listen(3000, () => {

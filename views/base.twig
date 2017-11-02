@@ -9,23 +9,22 @@
     <meta name="author" content="Maxime Lainé, Solène Dorey, Habit Jérémy">
     <link rel="icon" type="image/x-icon" href=""/>
 
-    <title>{% block title %}{% endblock %}: Metadata Js</title>
+    <title>{% block title %}{% endblock %} : Meta Data Js</title>
 
     <!-- css -->
     <link rel="stylesheet" href="/public/css/vendors/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/public/css/vendors/magic-monkey.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/main.css" type="text/css">
     <link rel="stylesheet"
-          href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+          href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
+          type="text/css">
     {% block css %}{% endblock %}
 
 </head>
-<body class="bg-yin">
-
+<body>
 
 <!-- @@@ HEADER @@@ -->
-<header id="header"
-        class="fixed-column-left padding-50 border-right border-silver border-none-right-l border-bottom-l bg-yang">
+<header id="header" class="fixed-column-left padding-50 border-right border-silver border-none-right-l border-bottom-l bg-yang">
 
     <!-- title -->
     <div class="row align-center">
@@ -78,7 +77,7 @@
         <!-- GITHUB-->
         <div class="row margin-50-top">
             <div class="cell-12 align-center anim-forward">
-                <a class="txt-size-jumbo padding round border hover-border-silver transition-2"
+                <a class="inline-block txt-size-jumbo padding round border hover-border-silver transition-2"
                    href="https://github.com/dayze/metadata-js"
                    title="Metadata js GitHub" target="_blank">
                     <i class="devicon-github-plain-wordmark colored"></i>
