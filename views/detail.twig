@@ -45,7 +45,9 @@
                             </a>
                         </li>
                         <li class="padding">
-                            <a download="XMP" href="" class="inline-block color-peter-river hover-color-turquoise"
+                            <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}_XMP"
+                               href="/{{ exifInfo.data.jsonPath }}"
+                               class="inline-block color-peter-river hover-color-turquoise"
                                title="Téléchargez le fichier sidecar XMP">
                                 <img class="responsive-img hide-xs" src="../public/icons/file.png"
                                      alt="Icon Téléchargement"/>
