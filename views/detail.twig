@@ -10,6 +10,7 @@
 
 
     <main>
+
         {% if exifInfo.error %}
             {# ERROR CASE #}
             <section id="errorContainer" class="overlay">
@@ -26,35 +27,43 @@
         {% else %}
             {# SUCCESS CASE #}
             <div class="row-column-reverse-xl flex-y-center">
-                <div class="cell-5 bg-yang padding-50 padding-30-s anim-fall">
-                    <h2 class="margin-0-top txt-unset color-amethyst txt-size-big align-center-s">
-                        {{ exifInfo.data[0].Title ?: "* Titre *" }}
-                    </h2>
-                    <p class="txt-i margin-50-top">
-                        {{ exifInfo.data[0].Description ?: "* Description *" }}
-                    </p>
-                    <ul class="list-unstyled align-center-xs">
-                        <li class="padding">
-                            <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}"
-                               href="/{{ exifInfo.data[0].SourceFile }}"
-                               class="inline-block color-peter-river hover-color-turquoise"
-                               title="Téléchargez l'image">
-                                <img class="responsive-img hide-xs" src="../public/icons/image.png"
-                                     alt="Icon Téléchargement"/>
-                                <span class="margin-15-left margin-0-xs">Télécharger l'image</span>
-                            </a>
-                        </li>
-                        <li class="padding">
-                            <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}_XMP"
-                               href="/{{ exifInfo.data.jsonPath }}"
-                               class="inline-block color-peter-river hover-color-turquoise"
-                               title="Téléchargez le fichier sidecar XMP">
-                                <img class="responsive-img hide-xs" src="../public/icons/file.png"
-                                     alt="Icon Téléchargement"/>
-                                <span class="margin-15-left margin-0-xs">Télécharger le fichier sidecar XMP</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="cell-5 bg-yang padding-30-s anim-fall">
+                    <div>
+                        <a href="/" title="Retour à l'accueil"
+                           class="color-amethyst txt-size-big hover-border-bottom transition-2">
+                            <span>&#8592;</span>
+                        </a>
+                    </div>
+                    <div class="padding-50">
+                        <h2 class="margin-0-top txt-unset color-amethyst txt-size-big align-center-s">
+                            {{ exifInfo.data[0].Title ?: "* Titre *" }}
+                        </h2>
+                        <p class="txt-i margin-50-top">
+                            {{ exifInfo.data[0].Description ?: "* Description *" }}
+                        </p>
+                        <ul class="list-unstyled align-center-xs">
+                            <li class="padding">
+                                <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}"
+                                   href="/{{ exifInfo.data[0].SourceFile }}"
+                                   class="inline-block color-peter-river hover-color-turquoise"
+                                   title="Téléchargez l'image">
+                                    <img class="responsive-img hide-xs" src="../public/icons/image.png"
+                                         alt="Icon Téléchargement"/>
+                                    <span class="margin-15-left margin-0-xs">Télécharger l'image</span>
+                                </a>
+                            </li>
+                            <li class="padding">
+                                <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}_XMP"
+                                   href="/{{ exifInfo.data.jsonPath|split(".")[0] }}.xmp"
+                                   class="inline-block color-peter-river hover-color-turquoise"
+                                   title="Téléchargez le fichier sidecar XMP">
+                                    <img class="responsive-img hide-xs" src="../public/icons/file.png"
+                                         alt="Icon Téléchargement"/>
+                                    <span class="margin-15-left margin-0-xs">Télécharger le fichier sidecar XMP</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="cell-7 align-center anim-backward">
                     <figure class="margin-50-top-l">

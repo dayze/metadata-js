@@ -3,10 +3,68 @@
 {% block title %}Upload{% endblock %}
 
 {% block body %}
+    <main>
+        <div class="row padding-50 align-center border-bottom border-silver">
+            <div class="cell-12 anim-fall">
+                <h1 class="margin-0 txt-size-big txt-unset">
+                    <span class="color-amethyst">&#10022;</span>
+                    <span>Édition des métadonnées</span>
+                </h1>
+            </div>
+        </div>
+        <section class="overlay anim-climb container margin-auto margin-50-top">
+            <div class="row flex-x-center">
+                <div class="cell-6 c-12-s">
+                    <figure>
+                        <img class="responsive-img" src="/public/images/prju12bpj9idc13d.jpg" alt=""/>
+                    </figure>
+                    {# <form class="styled-form flex-form" action="/update-metadata" method="post"
+                           enctype="multipart/form-data">
+                         <!-- submit -->
+                         <div class="actions-box margin-bottom">
+                             <input class="bg-amethyst width-100 color-yang border-none hover-bg-wisteria" type="submit"
+                                    value="Valider" id="submit"/>
+                         </div>
+                         <!-- image -->
+                         <div class="field-box">
+                             <div class="file-area">
+                                 <input type="file" name="file-to-upload" id="image" accept="image/*"
+                                        required="required"/>
+                                 <div class="file-dummy">
+                                     <span id="defaultTxt">Choisissez un fichier</span>
+                                     <img id="imgPreview" class="responsive-img dis-none" src="" alt=""/>
+                                 </div>
+                             </div>
+                         </div>
+                     </form>#}
+                </div>
+            </div>
 
-    <main class="anim-fall overlay bg-clouds">
 
-        <p>File uploaded successfully!</p>
+            <div class="row">
+                <div class="cell-12">
+                    <form action="" method="post" class="styled-form flex-form container-tiny margin-auto">
+                        <!-- submit -->
+                        <div class="actions-box margin-50-top-bottom">
+                            <input class="cursor-pointer bg-amethyst width-100 color-yang border-none hover-bg-wisteria" type="submit"
+                                   value="Valider" id="submit"/>
+                        </div>
+                        <div class="field-box">
+                            <label for="title">Titre</label>
+                            <input type="text" name="title" id="title" required="required"/>
+                        </div>
+                        <div class="field-box">
+                            <label for="creator">Auteur</label>
+                            <input type="text" name="creator" id="creator" required="required"/>
+                        </div>
+                        <div class="field-box">
+                            <label for="description">Description</label>
+                            <input type="text" name="description" id="title" required="required"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
 
     </main>
 {% endblock %}

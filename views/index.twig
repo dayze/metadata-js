@@ -19,11 +19,11 @@
                     <a href="/detail/{{ image.data.id }}" title="Détails de l'image" class="block">
                         <img src="{{ image.data[0].SourceFile }}"
                              alt="{{ image.data[0].Title ?: '* Titre *' }}"/>
-                        <div class="absolute-spread bg-yang-opac-9 padding">
-                            <h3 class="margin-0 color-amethyst">{{ image.data[0].Title ?: '* Titre *' }}</h3>
-                            <p class="truncate-4 truncate-2-xl truncate-3-l truncate-2-m truncate-7-s truncate-3-xs txt-i margin-30-top-bottom">
+                        <div class="absolute-spread padding bg-silver-opac-9">
+                            <h3 class="txt-i margin-0 color-yang">{{ image.data[0].Title ?: '* Titre *' }}</h3>
+                            <p class="truncate-4 line-height truncate-2-xl color-charcoal truncate-3-l truncate-2-m truncate-7-s truncate-3-xs margin-30-top-bottom">
                                 {{ image.data[0].Description ?: '* Description *' }}</p>
-                            <span class="color-wet-asphalt txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
+                            <span class="color-amethyst txt-b">{{ image.data[0].Creator ?: '* Auteur *' }}</span>
                         </div>
                     </a>
                 </li>

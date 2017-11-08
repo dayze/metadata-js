@@ -16,16 +16,18 @@
     <link rel="stylesheet" href="/public/css/vendors/magic-monkey.min.css" type="text/css"/>
     <link rel="stylesheet" href="/public/css/main.css" type="text/css">
     <link rel="stylesheet"
-          href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
-          type="text/css">
+          href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     {% block css %}{% endblock %}
+
+    {# js #}
+    {% block js %}{% endblock %}
 
 </head>
 <body>
 
 <!-- @@@ HEADER @@@ -->
 <header id="header"
-        class="fixed-column-left padding-50 border-right border-silver border-none-right-l border-bottom-l bg-yang">
+        class="fixed-column-left padding-50 color-yang bg-charcoal">
 
     <!-- title -->
     <div class="row align-center">
@@ -42,17 +44,18 @@
     <!-- links -->
     <div class="row-column-xs flex-y-center color-yang txt-b">
         <div class="cell-6 align-center">
-            <a href="" title="Ajouter une image" class="block bg-amethyst hover-bg-wisteria padding transition-2">Ajouter</a>
+            <a href="/upload" title="Ajouter une image"
+               class="block bg-amethyst hover-bg-wisteria padding transition-2">Ajouter</a>
         </div>
         <div class="cell-6 align-center">
             <a href="/page-technique" title="Page technique"
-               class="block bg-silver hover-bg-concrete padding transition-2">Page
+               class="color-charcoal block bg-silver hover-bg-concrete hover-color-yang padding transition-2">Page
                 technique</a>
         </div>
     </div>
 
     <div class="hide-l">
-        <hr class="ellipse width-70 margin-50-top">
+        <hr class="customEllipse width-70 margin-50-top">
 
         <!-- description -->
         <div class="row">
@@ -71,7 +74,7 @@
                     </li>
                     <li class="padding">
                         <span class="color-amethyst">&#10022;</span>
-                        Habit Jérémy
+                        Jérémy Habit
                     </li>
                 </ul>
             </div>
@@ -83,7 +86,7 @@
                 <a class="inline-block txt-size-jumbo padding round border hover-border-silver transition-2"
                    href="https://github.com/dayze/metadata-js"
                    title="Metadata js GitHub" target="_blank">
-                    <i class="devicon-github-plain-wordmark colored"></i>
+                    <i class="devicon-github-plain-wordmark"></i>
                 </a>
             </div>
         </div>
