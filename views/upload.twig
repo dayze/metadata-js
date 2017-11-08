@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block body %}
+
+    <main class="anim-fall overlay bg-clouds">
+
+        <form action="/update-metadata" enctype="multipart/form-data" method="post">
+            <input type="file" name="file-to-upload">
+            <input type="submit" value="Upload">
+        </form>
+
+    </main>
+{% endblock %}
