@@ -32,7 +32,7 @@ app.get('/', (req, res) => { //add uniqid + generer fichier json image
       for (let file of files) {
         let extension = fileExtension(file)
         if (extension === 'json') {
-          let exifInfo = exif.getExifFromFile(`${imagesRoot}/${file}`)
+          let exifInfo = exif.getExifFromFile(file)
           exifInfo.data.id = path.basename(file, `.${extension}`)
           exifsInfo.push(exifInfo)
         }
@@ -52,8 +52,8 @@ app.get('/detail/:id', (req, res) => {
         let extension = fileExtension(file)
         if (extension === 'json') {
           if (path.basename(file, `.${extension}`) === req.params.id) {
-            exifInfo = exif.getExifFromFile(`${imagesRoot}/${file}`)
-            exifInfo.data.jsonPath = `${imagesRoot}/${file}`
+            exifInfo = exif.getExifFromFile(file)
+            exifInfo.data.jsonPath = file
             break
           }
         }
@@ -69,8 +69,8 @@ app.get('/detail/:id', (req, res) => {
 
 /* UPLOAD
    ========================================================================== */
-app.get("/upload", (req, res) => {
-  res.render("upload")
+app.get('/upload', (req, res) => {
+  res.render('upload')
 })
 
 app.post('/update-metadata', (req, res) => {
@@ -83,16 +83,20 @@ app.post('/update-metadata', (req, res) => {
       callback(null, `${uniqid()}.${extension}`)
     }
   })
-  let upload = multer({
-    storage: storage
-  }).single('file-to-upload')
+  let upload = multer({storage}).single('file-to-upload')
 
   upload(req, res, function (err) {
     if (err) {
-      return res.end({upload: {error:true}})
+      console.log(err)
+      return res.end({upload: {error: true}})
     }
-    exif.writeExif(req.file.path)
-    res.render('update_metadata')
+    let extension = fileExtension(req.file.filename)
+    let fileWithoutExtension = path.basename(req.file.filename, `.${extension}`)
+    exif.write(req.file.filename).then(() => {
+      let exifInfo = exif.getExifFromFile(`${fileWithoutExtension}.json`)
+      exifInfo.data.id = fileWithoutExtension
+      res.render('update_metadata', {exifInfo})
+    })
   })
 })
 
