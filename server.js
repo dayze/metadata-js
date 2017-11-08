@@ -7,6 +7,7 @@ const path = require('path')
 const fs = require('fs')
 const multer = require('multer')
 const formidable = require('formidable')
+const uniqid = require('uniqid')
 
 /* PERSONNAL MODULE
    ========================================================================== */
@@ -66,28 +67,31 @@ app.get('/detail/:id', (req, res) => {
   })
 })
 
-app.get('/upload', (req, res) => {
-  res.render('upload')
+/* UPLOAD
+   ========================================================================== */
+app.get("/upload", (req, res) => {
+  res.render("upload")
 })
-
-let storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, 'uploads/')
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
-  }
-})
-
-let upload = multer({
-  storage: storage
-}).single('file-to-upload')
 
 app.post('/update-metadata', (req, res) => {
+  let storage = multer.diskStorage({
+    destination (req, file, callback) {
+      callback(null, `${imagesRoot}`)
+    },
+    filename (req, file, callback) {
+      let extension = fileExtension(file.originalname)
+      callback(null, `${uniqid()}.${extension}`)
+    }
+  })
+  let upload = multer({
+    storage: storage
+  }).single('file-to-upload')
+
   upload(req, res, function (err) {
     if (err) {
-      return res.end('Something went wrong!')
+      return res.end({upload: {error:true}})
     }
+    exif.writeExif(req.file.path)
     res.render('update_metadata')
   })
 })

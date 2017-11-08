@@ -19,14 +19,14 @@ ep
   .catch(console.error)
 */
 
-module.exports.writeExif = (file) => {
+module.exports.writeExif = (filePath) => {
   ep
     .open()
     // display pid
     .then((pid) => console.log('Started exiftool process %s', pid))
-    .then(() => ep.readMetadata(file, ['-File:all']))
+    .then(() => ep.readMetadata(filePath, ['-File:all']))
     .then((data) => {
-      this.writeFile(file, data)
+      this.writeFile(filePath, data)
     })
     .then(() => ep.close())
     .then(() => console.log('Closed exiftool'))
@@ -34,10 +34,10 @@ module.exports.writeExif = (file) => {
 
 }
 
-module.exports.writeFile = (file, data) => {
+module.exports.writeFile = (filePath, data) => {
   return new Promise((resolve, reject) => {
-    let extension = fileExtension(file)
-    let nameFile = path.basename(file, `.${extension}`)
+    let extension = fileExtension(filePath)
+    let nameFile = path.basename(filePath, `.${extension}`)
     fs.writeFile(`${imagesRoot}/${nameFile}.json`, JSON.stringify(data), (err) => {
       if (err) {
         reject(err)
