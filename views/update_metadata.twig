@@ -6,6 +6,9 @@
 
     <main class="anim-fall overlay bg-clouds">
 
+        {% if upload is defined %}
+            <p>C'était pas une image!</p>
+        {% endif %}
         <p>File uploaded successfully!</p>
 
     </main>
