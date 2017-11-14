@@ -13,6 +13,7 @@
     "ignore": ["public/images/*"]
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "file-extension": "^3.1.2",
     "formidable": "^1.1.1",

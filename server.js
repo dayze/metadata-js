@@ -7,6 +7,7 @@ const path = require('path')
 const fs = require('fs')
 const multer = require('multer')
 const formidable = require('formidable')
+const bodyParser = require('body-parser')
 const uniqid = require('uniqid')
 
 /* PERSONNAL MODULE
@@ -83,12 +84,19 @@ app.post('/update-metadata', (req, res) => {
       callback(null, `${uniqid()}.${extension}`)
     }
   })
-  let upload = multer({storage}).single('file-to-upload')
+  let upload = multer({
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+      if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+        return cb(new Error('Only image files are allowed!'))
+      }
+      cb(null, true);
+    }
+  }).single('file-to-upload')
 
   upload(req, res, function (err) {
     if (err) {
-      console.log(err)
-      return res.end({upload: {error: true}})
+      return res.render('update_metadata', {upload: {error:true}})
     }
     let extension = fileExtension(req.file.filename)
     let fileWithoutExtension = path.basename(req.file.filename, `.${extension}`)
