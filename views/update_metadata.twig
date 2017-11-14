@@ -2,14 +2,82 @@
 
 {% block title %}Upload{% endblock %}
 
-{% block body %}
+{% block css %}
+    <link rel="stylesheet" href="/public/css/pages/error.css" type="text/css">
+{% endblock %}
 
-    <main class="anim-fall overlay bg-clouds">
+{% block body %}
+    <main>
+
+        {% if exifInfo.error %}
+            {# ERROR CASE #}
+            <section id="errorContainer" class="overlay">
+                <div class="absolute-row-middle align-center color-yang">
+                    <h1 class="margin-0-top txt-size-giant">
+                        <span>Oups</span>
+                        <span class="color-amethyst">!</span>
+                    </h1>
+                    <h3 class="txt-unset">
+                        Une erreur est survenue lors de la récupération des métadonnées de l'image...
+                    </h3>
+                </div>
+            </section>
+        {% else %}
+            {# SUCCESS CASE #}
+            <div class="row padding-50 align-center border-bottom border-silver">
+                <div class="cell-12 anim-fall">
+                    <h1 class="margin-0 txt-size-big txt-unset">
+                        <span class="color-amethyst">&#10022;</span>
+                        <span>Édition des métadonnées</span>
+                    </h1>
+                </div>
+            </div>
+            <section class="overlay anim-climb container margin-auto margin-50-top-bottom">
+                <div class="row flex-x-center">
+                    <div class="cell-6 c-12-s">
+                        <figure>
+                            <img class="responsive-img" src="/public/images/prju12bpj9idc13d.jpg" alt=""/>
+                        </figure>
+                    </div>
+                </div>
 
         {% if upload is defined %}
             <p>C'était pas une image!</p>
         {% endif %}
         <p>File uploaded successfully!</p>
 
+                <div class="row">
+                    <div class="cell-12">
+                        <form action="" method="post" class="styled-form flex-form container-tiny margin-auto">
+                            <!-- submit -->
+                            <div class="actions-box margin-50-top-bottom">
+                                <input class="cursor-pointer bg-amethyst width-100 color-yang border-none hover-bg-wisteria"
+                                       type="submit"
+                                       value="Valider" id="submit"/>
+                            </div>
+                            <div class="field-box">
+                                <label for="title">Titre</label>
+                                <input type="text" name="title" id="title" required="required"/>
+                            </div>
+                            <div class="field-box">
+                                <label for="creator">Auteur</label>
+                                <input type="text" name="creator" id="creator" required="required"/>
+                            </div>
+                            <div class="field-box">
+                                <label for="description">Description</label>
+                                <input type="text" name="description" id="title" required="required"/>
+                            </div>
+                            {% for metadataTag, metadataValue in exifInfo.data[0] %}
+                                <div class="field-box">
+                                    <label for="{{ metadataTag }}">{{ metadataTag }}</label>
+                                    <input type="text" name="{{ metadataTag }}" id="{{ metadataTag }}"
+                                           value="{{ metadataValue }}"/>
+                                </div>
+                            {% endfor %}
+                        </form>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
     </main>
 {% endblock %}

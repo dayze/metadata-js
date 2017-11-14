@@ -4,6 +4,32 @@ header {
     overflow-y: auto;
 }
 
+/* line-height */
+
+p.line-height {
+    line-height: 1.5;
+}
+
+/* color charcoal */
+
+.bg-charcoal {
+    background: #36393E;
+}
+
+.color-charcoal {
+    color: #36393E;
+}
+
+.hover-bg-charcoal-opac-9 {
+    background-color: rgba(54, 57, 62, 0.9);
+}
+
+hr.customEllipse {
+    border: none;
+    height: 1px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 75%);
+}
+
 main {
     margin-left: 30vw;
 }
