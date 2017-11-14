@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "nodemonConfig": {
+    "ignore": ["public/images/*"]
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
