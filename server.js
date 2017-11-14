@@ -100,8 +100,12 @@ app.post('/update-metadata', (req, res) => {
   })
 })
 
-app.get('/page-technique', (req, res) => {
-  res.render('technique_page', {})
+app.post('/save-metadata',(req, res) => {
+  res.render('/', {metadata: {save: true}})
+})
+
+app.get('/technical-page', (req, res) => {
+  res.render('technical_page', {})
 })
 
 app.listen(3000, () => {
