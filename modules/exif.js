@@ -35,7 +35,6 @@ module.exports.writeFileXmp = (filePath) => {
         resolve()
       })
   })
-
 }
 
 module.exports.writeFileJson = (filePath, data) => {

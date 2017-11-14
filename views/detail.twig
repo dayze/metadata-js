@@ -30,7 +30,7 @@
                 <div class="cell-5 bg-yang padding-30-s anim-fall">
                     <div>
                         <a href="/" title="Retour à l'accueil"
-                           class="color-amethyst txt-size-big hover-border-bottom transition-2">
+                           class="color-amethyst txt-size-big  border-bottom border-transparent hover-border-bottom transition-2">
                             <span>&#8592;</span>
                         </a>
                     </div>
@@ -54,7 +54,7 @@
                             </li>
                             <li class="padding">
                                 <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}_XMP"
-                                   href="/{{ exifInfo.data.jsonPath|split(".")[0] }}.xmp"
+                                   href="/public/images/{{ exifInfo.data.jsonPath|split(".")[0] }}.xmp"
                                    class="inline-block color-peter-river hover-color-turquoise"
                                    title="Téléchargez le fichier sidecar XMP">
                                     <img class="responsive-img hide-xs" src="../public/icons/file.png"
