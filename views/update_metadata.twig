@@ -1,6 +1,6 @@
 {% extends "base.twig" %}
 
-{% block title %}Upload{% endblock %}
+{% block title %}Mettre à jour les métadonnées{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="/public/css/pages/error.css" type="text/css">
@@ -9,7 +9,7 @@
 {% block body %}
     <main>
 
-        {% if exifInfo.error %}
+        {% if error is defined %}
             {# ERROR CASE #}
             <section id="errorContainer" class="overlay">
                 <div class="absolute-row-middle align-center color-yang">
@@ -41,11 +41,6 @@
                     </div>
                 </div>
 
-        {% if upload is defined %}
-            <p>C'était pas une image!</p>
-        {% endif %}
-        <p>File uploaded successfully!</p>
-
                 <div class="row">
                     <div class="cell-12">
                         <form action="/save-metadata" method="post" class="styled-form flex-form container-tiny margin-auto">
@@ -58,29 +53,29 @@
                             {% if exifInfo.data[0].Title is not defined %}
                             <div class="field-box">
                                 <label for="title">Title</label>
-                                <input type="text" name="title" id="title" required="required"/>
+                                <input type="text" name="metadata[Title]" id="title" required="required"/>
                             </div>
                             {% endif %}
                             {% if exifInfo.data[0].Creator is not defined %}
                             <div class="field-box">
-                                <label for="creator">Auteur</label>
-                                <input type="text" name="creator" id="creator" required="required"/>
+                                <label for="creator">Creator</label>
+                                <input type="text" name="metadata[Creator]" id="creator" required="required"/>
                             </div>
                             {% endif %}
                             {% if exifInfo.data[0].Description is not defined %}
                             <div class="field-box">
                                 <label for="description">Description</label>
-                                <input type="text" name="description" id="title" required="required"/>
+                                <input type="text" name="metadata[Description]" id="title" required="required"/>
                             </div>
                             {% endif %}
                             {% for metadataTag, metadataValue in exifInfo.data[0] %}
                                 <div class="field-box">
                                     {% if  metadataTag == 'SourceFile'%}
-                                        <input type="hidden" name="{{ metadataTag }}" id="{{ metadataTag }}"
+                                        <input type="hidden" name="metadata[{{ metadataTag }}]" id="{{ metadataTag }}"
                                                value="{{ metadataValue }}"/>
                                     {% else %}
                                         <label for="{{ metadataTag }}">{{ metadataTag }}</label>
-                                        <input type="text" name="{{ metadataTag }}" id="{{ metadataTag }}"
+                                        <input type="text" name="metadata[{{ metadataTag }}]" id="{{ metadataTag }}"
                                                value="{{ metadataValue }}"/>
                                     {% endif %}
                                 </div>

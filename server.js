@@ -6,7 +6,6 @@ const fileExtension = require('file-extension')
 const path = require('path')
 const fs = require('fs')
 const multer = require('multer')
-const formidable = require('formidable')
 const bodyParser = require('body-parser')
 const uniqid = require('uniqid')
 
@@ -25,6 +24,10 @@ app.set('view engine', 'twig')
 app.set('twig options', {
   strict_variables: false
 })
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+// parse application/json
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => { //add uniqid + generer fichier json image
   new Promise((resolve) => {
@@ -85,7 +88,7 @@ app.post('/update-metadata', (req, res) => {
     }
   })
   let upload = multer({
-    storage: storage,
+    storage,
     fileFilter: function (req, file, cb) {
       if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
         return cb(new Error('Only image files are allowed!'))
@@ -96,7 +99,7 @@ app.post('/update-metadata', (req, res) => {
 
   upload(req, res, function (err) {
     if (err) {
-      return res.render('update_metadata', {upload: {error:true}})
+      return res.render('upload', {error:true})
     }
     let extension = fileExtension(req.file.filename)
     let fileWithoutExtension = path.basename(req.file.filename, `.${extension}`)
@@ -109,7 +112,16 @@ app.post('/update-metadata', (req, res) => {
 })
 
 app.post('/save-metadata',(req, res) => {
-  res.render('/', {metadata: {save: true}})
+  let filePath = req.body.metadata.SourceFile;
+  let extension = fileExtension(filePath)
+  let fileWithoutExtension = path.basename(filePath, `.${extension}`)
+  let updatedMetadata = JSON.stringify(req.body.metadata)
+  fs.writeFileSync(`${imagesRoot}/${fileWithoutExtension}.json`, updatedMetadata)
+  exif.updateExifFromJson(`${imagesRoot}/${fileWithoutExtension}.json`, filePath)
+  let updatedJsonMetadata = {'data': [], 'error': null}
+  updatedJsonMetadata.data[0] = req.body.metadata
+  fs.writeFileSync(`${imagesRoot}/${fileWithoutExtension}.json`, JSON.stringify(updatedJsonMetadata))
+  res.redirect('/')
 })
 
 app.get('/technical-page', (req, res) => {

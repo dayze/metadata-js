@@ -1,6 +1,6 @@
 {% extends "base.twig" %}
 
-{% block title %}Ajout d'un image{% endblock %}
+{% block title %}Ajout d'une image{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="/public/css/components/myDropzone.css" type="text/css">
@@ -8,12 +8,23 @@
 
 {% block js %}
     <script type="text/javascript" src="/public/js/myDropZone.js"></script>
+    <script src="/public/js/closeModal.js" type="text/javascript"></script>
 {% endblock %}
 
     {% block body %}
 
         <main>
-
+            {% if error is defined %}
+            {# ERROR CASE #}
+            <div class="row modal-container">
+                <div class="cell-12">
+                    <p class="note-error">
+                        Une erreur est survenue lors de l'upload de l'image...
+                        <span class="float-right margin-5-right cursor-pointer modal">X</span>
+                    </p>
+                </div>
+            </div>
+            {% endif %}
             <div class="row padding-50 align-center border-bottom border-silver">
                 <div class="cell-12 anim-fall">
                     <h1 class="margin-0 txt-size-big txt-unset">
@@ -25,7 +36,8 @@
             <section class="overlay anim-climb container margin-auto margin-50-top">
                 <div class="row">
                     <div class="cell-12">
-                        <form class="styled-form flex-form container-tiny margin-auto" action="/update-metadata" method="post"
+                        <form class="styled-form flex-form container-tiny margin-auto" action="/update-metadata"
+                              method="post"
                               enctype="multipart/form-data">
                             <!-- submit -->
                             <div class="actions-box margin-bottom">

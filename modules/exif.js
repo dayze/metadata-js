@@ -27,7 +27,7 @@ module.exports.writeFileXmp = (filePath) => {
   return new Promise((resolve, reject) => {
     let extension = fileExtension(filePath)
     let nameFile = path.basename(filePath, `.${extension}`)
-    exec(`exiftool -tagsfromfile ${imagesRoot}/${filePath} ${imagesRoot}/${nameFile}.xmp`,
+    exec(`exiftool -overwrite_original -tagsfromfile ${imagesRoot}/${nameFile}.${extension} ${imagesRoot}/${nameFile}.xmp`,
       (error, stdout, stderr) => {
         if (error !== null) {
           reject(error)
@@ -52,5 +52,33 @@ module.exports.writeFileJson = (filePath, data) => {
 
 module.exports.getExifFromFile = (file) => {
   return JSON.parse(fs.readFileSync(`${imagesRoot}/${file}`, 'utf-8'))
+}
+
+module.exports.updateFileMetadata = (jsonFilePath, imageFilePath) => {
+  return new Promise((resolve, reject) => {
+    console.log(`exiftool -verbose -j=${jsonFilePath} ${imageFilePath}`)
+    exec(`exiftool -verbose -overwrite_original -j=${jsonFilePath} ${imageFilePath}`,
+      (error, stdout, stderr) => {
+        if (error !== null) {
+          reject(error)
+        }
+        resolve()
+      })
+  })
+}
+
+module.exports.updateExifFromJson = (jsonObject, imageFilePath) => {
+  return new Promise((resolve, reject) => {
+    ep
+      .open()
+      // display pid
+      .then((pid) => console.log('Started exiftool process %s', pid))
+      .then(() => this.updateFileMetadata(jsonObject, imageFilePath))
+      .then(() => this.writeFileXmp(imageFilePath))
+      .then(() => ep.close())
+      .then(() => console.log('Closed exiftool'))
+      .then(() => resolve())
+      .catch(console.error)
+  })
 }
 
