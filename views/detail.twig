@@ -131,15 +131,15 @@
                              class="responsive-img"
                              src="/{{ exifInfo.data[0].SourceFile }}"
                              alt=" {{ exifInfo.data[0].Title ?: "* Titre *" }}"/>
-                        <figcaption itemprop="caption" class="hide">
+                        <figcaption class="hide">
                             {% if  exifInfo.data[0].Title %}
-                            <h2>{{ exifInfo.data[0].Title }}</h2>
+                            <h2 itemprop="name">{{ exifInfo.data[0].Title }}</h2>
                             {% endif %}
                             {% if  exifInfo.data[0].Creator %}
-                                <h3>{{ exifInfo.data[0].Creator }}</h3>
+                            <h3 itemprop="author">{{ exifInfo.data[0].Creator }}</h3>
                             {% endif %}
                             {% if  exifInfo.data[0].Description %}
-                                <h3>{{ exifInfo.data[0].Description }}</h3>
+                            <p> itemprop="caption">{{ exifInfo.data[0].Description }}</p>
                             {% endif %}
                         </figcaption>
                     </figure>
