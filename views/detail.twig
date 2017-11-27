@@ -1,5 +1,67 @@
 {% extends "base.twig" %}
 
+{% block meta %}
+    <!-- Métadonnées du DublinCore -->
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+    {% if  exifInfo.data[0].Title %}
+    <meta name="DC.title" content="{{ exifInfo.data[0].Title }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].Creator %}
+    <meta name="DC.creator" content="{{ exifInfo.data[0].Creator }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].Subject %}
+    <meta name="DC.subject" content="{{ exifInfo.data[0].Subject }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].Description %}
+    <meta name="DC.description" content="{{ exifInfo.data[0].Description }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].DateCreated %}
+    <meta name="DC.date" content="{{ exifInfo.data[0].DateCreated }}"/>
+    {% endif %}
+    <meta name="DC.Type" content="StillImage"/>
+    {% if  exifInfo.data[0].Rights %}
+    <meta name="DC.rights" content="{{ exifInfo.data[0].Rights }}"/>
+    {% endif %}
+    <!-- Métadonnées Facebook -->
+    {% if  exifInfo.data[0].Title %}
+    <meta property="og:title" content="{{ exifInfo.data[0].Title }}"/>
+    {% endif %}
+    <meta property="og:type" content="image"/>
+    <meta property="og:url" content="{{ request_uri }}"/>
+    {% if  exifInfo.data[0].SourceFile %}
+    <meta property="og:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].Description %}
+    <meta property="og:description" content="{{ exifInfo.data[0].Description }}"/>
+    {% endif %}
+    <meta property="og:site_name" content="Meta Data Js" />
+    <meta property="og:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}" />
+    <meta property="og:image:type" content="" />
+    {% if  exifInfo.data[0].ExifImageWidth %}
+    <meta property="og:image:width" content="{{ exifInfo.data[0].ExifImageWidth }}" />
+    {% endif %}
+    {% if  exifInfo.data[0].ExifImageHeight %}
+    <meta property="og:image:height" content="{{ exifInfo.data[0].ExifImageHeight }}" />
+    {% endif %}
+    {% if  exifInfo.data[0].Description %}
+    <meta property="og:image:alt" content="{{ exifInfo.data[0].Description }}" />
+    {% endif %}
+    <!-- Métadonnées Twitter -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content=""/>
+    {% if  exifInfo.data[0].Creator %}
+    <meta name="twitter:creator"  content="{{ exifInfo.data[0].Creator }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].Title %}
+    <meta name="twitter:title" content="{{ exifInfo.data[0].Title }}"/>
+    {% endif %}
+    {% if  exifInfo.data[0].Description %}
+    <meta name="twitter:description" content="{{ exifInfo.data[0].Description }}" />
+    {% endif %}
+    <meta name="twitter:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}">
+
+{% endblock %}
+
 {% block title %}Détails d'une image{% endblock %}
 
 {% block css %}
@@ -7,7 +69,6 @@
 {% endblock %}
 
 {% block body %}
-
 
     <main>
 

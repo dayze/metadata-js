@@ -25,7 +25,7 @@ app.set('twig options', {
   strict_variables: false
 })
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({extended: true}))
 // parse application/json
 app.use(bodyParser.json())
 
@@ -65,7 +65,11 @@ app.get('/detail/:id', (req, res) => {
       resolve(exifInfo)
     })
   }).then((exifInfo) => {
-    Object.keys(exifInfo).length !== 0 ? res.render('detail', {exifInfo}) : res.render('detail', {exifInfo: {error: true}})
+    Object.keys(exifInfo).length !== 0 ? res.render('detail', {
+      exifInfo,
+      app_url: req.protocol + '://' + req.headers.host + '/',
+      request_uri: req.protocol + '://' + req.headers.host + req.originalUrl + '/'
+    }) : res.render('detail', {exifInfo: {error: true}})
   }).catch((e) => {
     console.log(e)
   })
@@ -90,16 +94,16 @@ app.post('/update-metadata', (req, res) => {
   let upload = multer({
     storage,
     fileFilter: function (req, file, cb) {
-      if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+      if (!file.originalname.match(/\.(jpg|jpeg|png|gif|tiff)$/)) {
         return cb(new Error('Only image files are allowed!'))
       }
-      cb(null, true);
+      cb(null, true)
     }
   }).single('file-to-upload')
 
   upload(req, res, function (err) {
     if (err) {
-      return res.render('upload', {error:true})
+      return res.render('upload', {error: true})
     }
     let extension = fileExtension(req.file.filename)
     let fileWithoutExtension = path.basename(req.file.filename, `.${extension}`)
@@ -111,8 +115,8 @@ app.post('/update-metadata', (req, res) => {
   })
 })
 
-app.post('/save-metadata',(req, res) => {
-  let filePath = req.body.metadata.SourceFile;
+app.post('/save-metadata', (req, res) => {
+  let filePath = req.body.metadata.SourceFile
   let extension = fileExtension(filePath)
   let fileWithoutExtension = path.basename(filePath, `.${extension}`)
   let updatedMetadata = JSON.stringify(req.body.metadata)
