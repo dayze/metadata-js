@@ -8,9 +8,7 @@
 
 {% block body %}
 
-
     <main>
-
         {% if exifInfo.error %}
             {# ERROR CASE #}
             <section id="errorContainer" class="overlay">
@@ -43,7 +41,7 @@
                         </p>
                         <ul class="list-unstyled align-center-xs">
                             <li class="padding">
-                                <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}"
+                                <a download="{{ exifInfo.data[0].basename|replace({' ': '_'}) }}"
                                    href="/{{ exifInfo.data[0].SourceFile }}"
                                    class="inline-block color-peter-river hover-color-turquoise"
                                    title="Téléchargez l'image">
@@ -53,8 +51,8 @@
                                 </a>
                             </li>
                             <li class="padding">
-                                <a download="{{ exifInfo.data[0].Title|replace({' ': '_'}) }}_XMP"
-                                   href="/public/images/{{ exifInfo.data.jsonPath|split(".")[0] }}.xmp"
+                                <a download="{{ exifInfo.data[0].basename|replace({' ': '_'}) }}.xmp"
+                                   href="/public/images/{{ exifInfo.data[0].jsonPath|split(".")[0] }}.xmp"
                                    class="inline-block color-peter-river hover-color-turquoise"
                                    title="Téléchargez le fichier sidecar XMP">
                                     <img class="responsive-img hide-xs" src="../public/icons/file.png"

@@ -54,10 +54,12 @@ app.get('/detail/:id', (req, res) => {
       let exifInfo = {}
       for (let file of files) {
         let extension = fileExtension(file)
+        let basename = path.basename(file, `.${extension}`)
         if (extension === 'json') {
-          if (path.basename(file, `.${extension}`) === req.params.id) {
+          if (basename === req.params.id) {
             exifInfo = exif.getExifFromFile(file)
-            exifInfo.data.jsonPath = file
+            exifInfo.data[0].jsonPath = file
+            exifInfo.data[0].basename = basename
             break
           }
         }
