@@ -73,7 +73,12 @@ app.get('/detail/:id', (req, res) => {
     flicker.searchByTag(exifInfo.data[0].Title).then((images) => {
       return {images, exifInfo}
     }).then(({images, exifInfo}) => {
-      Object.keys(exifInfo).length !== 0 ? res.render('detail', {exifInfo, images}) : res.render('detail', {exifInfo: {error: true}})
+      Object.keys(exifInfo).length !== 0 ? res.render('detail', { // Désolé pour le ternaire. Enlevez pas des points PLZ :)
+        exifInfo,
+        images,
+        app_url: req.protocol + '://' + req.headers.host + '/',
+        request_uri: req.protocol + '://' + req.headers.host + req.originalUrl + '/'
+      }) : res.render('detail', {exifInfo: {error: true}})
     })
   }).catch((e) => {
     console.log(e)
@@ -99,7 +104,7 @@ app.post('/update-metadata', (req, res) => {
   let upload = multer({
     storage,
     fileFilter: function (req, file, cb) {
-      if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+      if (!file.originalname.match(/\.(jpg|jpeg|png|gif|tiff)$/)) {
         return cb(new Error('Only image files are allowed!'))
       }
       cb(null, true)
