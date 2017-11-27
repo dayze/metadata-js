@@ -10,7 +10,9 @@
   "license": "ISC",
   "description": "",
   "nodemonConfig": {
-    "ignore": ["public/images/*"]
+    "ignore": [
+      "public/images/*"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.18.2",
