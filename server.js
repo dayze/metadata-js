@@ -8,6 +8,7 @@ const fs = require('fs')
 const multer = require('multer')
 const bodyParser = require('body-parser')
 const uniqid = require('uniqid')
+const flicker = require('./modules/flickr')
 
 /* PERSONNAL MODULE
    ========================================================================== */
@@ -25,7 +26,7 @@ app.set('twig options', {
   strict_variables: false
 })
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({extended: true}))
 // parse application/json
 app.use(bodyParser.json())
 
@@ -52,6 +53,7 @@ app.get('/detail/:id', (req, res) => {
   new Promise((resolve) => {
     fs.readdir(`${imagesRoot}`, (err, files) => {
       let exifInfo = {}
+      // search for the correct file
       for (let file of files) {
         let extension = fileExtension(file)
         let basename = path.basename(file, `.${extension}`)
@@ -67,7 +69,12 @@ app.get('/detail/:id', (req, res) => {
       resolve(exifInfo)
     })
   }).then((exifInfo) => {
-    Object.keys(exifInfo).length !== 0 ? res.render('detail', {exifInfo}) : res.render('detail', {exifInfo: {error: true}})
+    // api flickr by tag, tag must be seperate by +
+    flicker.searchByTag(exifInfo.data[0].Title).then((images) => {
+      return {images, exifInfo}
+    }).then(({images, exifInfo}) => {
+      Object.keys(exifInfo).length !== 0 ? res.render('detail', {exifInfo, images}) : res.render('detail', {exifInfo: {error: true}})
+    })
   }).catch((e) => {
     console.log(e)
   })
@@ -95,13 +102,13 @@ app.post('/update-metadata', (req, res) => {
       if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
         return cb(new Error('Only image files are allowed!'))
       }
-      cb(null, true);
+      cb(null, true)
     }
   }).single('file-to-upload')
 
   upload(req, res, function (err) {
     if (err) {
-      return res.render('upload', {error:true})
+      return res.render('upload', {error: true})
     }
     let extension = fileExtension(req.file.filename)
     let fileWithoutExtension = path.basename(req.file.filename, `.${extension}`)
@@ -113,8 +120,8 @@ app.post('/update-metadata', (req, res) => {
   })
 })
 
-app.post('/save-metadata',(req, res) => {
-  let filePath = req.body.metadata.SourceFile;
+app.post('/save-metadata', (req, res) => {
+  let filePath = req.body.metadata.SourceFile
   let extension = fileExtension(filePath)
   let fileWithoutExtension = path.basename(filePath, `.${extension}`)
   let updatedMetadata = JSON.stringify(req.body.metadata)
