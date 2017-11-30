@@ -48,7 +48,7 @@
     {% endif %}
     <!-- Métadonnées Twitter -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:site" content=""/>
+    <meta name="twitter:site" content="{{ request_uri }}"/>
     {% if  exifInfo.data[0].Creator %}
         <meta name="twitter:creator" content="{{ exifInfo.data[0].Creator }}"/>
     {% endif %}
@@ -173,10 +173,22 @@
                     </div>
                 </div>
                 <div class="cell-7 align-center anim-backward">
-                    <figure class="margin-50-top-l">
-                        <img class="responsive-img"
+                    <figure itemscope itemtype="http://schema.org/ImageObject" class="margin-50-top-l">
+                        <img itemprop="url"
+                             class="responsive-img"
                              src="/{{ exifInfo.data[0].SourceFile }}"
                              alt=" {{ exifInfo.data[0].Title ?: "* Titre *" }}"/>
+                        <figcaption class="hide">
+                            {% if  exifInfo.data[0].Title %}
+                            <h2 itemprop="name">{{ exifInfo.data[0].Title }}</h2>
+                            {% endif %}
+                            {% if  exifInfo.data[0].Creator %}
+                            <h3 itemprop="author">{{ exifInfo.data[0].Creator }}</h3>
+                            {% endif %}
+                            {% if  exifInfo.data[0].Description %}
+                            <p> itemprop="caption">{{ exifInfo.data[0].Description }}</p>
+                            {% endif %}
+                        </figcaption>
                     </figure>
                 </div>
             </div>
