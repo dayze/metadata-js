@@ -10,7 +10,7 @@ module.exports.searchByTag = (tag) => { // tag must be seperate by +
     Flickr.tokenOnly(flickrOptions, function (error, flickr) {
       flickr.photos.search({
         text: tag,
-        per_page: 10
+        per_page: 20
       }, function (err, result) {
         if (err) { console.log(err) }
         console.log(tag)

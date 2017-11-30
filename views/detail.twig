@@ -2,61 +2,61 @@
 
 {% block meta %}
     <!-- Métadonnées du DublinCore -->
-    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
     {% if  exifInfo.data[0].Title %}
-    <meta name="DC.title" content="{{ exifInfo.data[0].Title }}"/>
+        <meta name="DC.title" content="{{ exifInfo.data[0].Title }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Creator %}
-    <meta name="DC.creator" content="{{ exifInfo.data[0].Creator }}"/>
+        <meta name="DC.creator" content="{{ exifInfo.data[0].Creator }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Subject %}
-    <meta name="DC.subject" content="{{ exifInfo.data[0].Subject }}"/>
+        <meta name="DC.subject" content="{{ exifInfo.data[0].Subject }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Description %}
-    <meta name="DC.description" content="{{ exifInfo.data[0].Description }}"/>
+        <meta name="DC.description" content="{{ exifInfo.data[0].Description }}"/>
     {% endif %}
     {% if  exifInfo.data[0].DateCreated %}
-    <meta name="DC.date" content="{{ exifInfo.data[0].DateCreated }}"/>
+        <meta name="DC.date" content="{{ exifInfo.data[0].DateCreated }}"/>
     {% endif %}
     <meta name="DC.Type" content="StillImage"/>
     {% if  exifInfo.data[0].Rights %}
-    <meta name="DC.rights" content="{{ exifInfo.data[0].Rights }}"/>
+        <meta name="DC.rights" content="{{ exifInfo.data[0].Rights }}"/>
     {% endif %}
     <!-- Métadonnées Facebook -->
     {% if  exifInfo.data[0].Title %}
-    <meta property="og:title" content="{{ exifInfo.data[0].Title }}"/>
+        <meta property="og:title" content="{{ exifInfo.data[0].Title }}"/>
     {% endif %}
     <meta property="og:type" content="image"/>
     <meta property="og:url" content="{{ request_uri }}"/>
     {% if  exifInfo.data[0].SourceFile %}
-    <meta property="og:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}"/>
+        <meta property="og:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Description %}
-    <meta property="og:description" content="{{ exifInfo.data[0].Description }}"/>
+        <meta property="og:description" content="{{ exifInfo.data[0].Description }}"/>
     {% endif %}
-    <meta property="og:site_name" content="Meta Data Js" />
-    <meta property="og:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}" />
-    <meta property="og:image:type" content="" />
+    <meta property="og:site_name" content="Meta Data Js"/>
+    <meta property="og:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}"/>
+    <meta property="og:image:type" content=""/>
     {% if  exifInfo.data[0].ExifImageWidth %}
-    <meta property="og:image:width" content="{{ exifInfo.data[0].ExifImageWidth }}" />
+        <meta property="og:image:width" content="{{ exifInfo.data[0].ExifImageWidth }}"/>
     {% endif %}
     {% if  exifInfo.data[0].ExifImageHeight %}
-    <meta property="og:image:height" content="{{ exifInfo.data[0].ExifImageHeight }}" />
+        <meta property="og:image:height" content="{{ exifInfo.data[0].ExifImageHeight }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Description %}
-    <meta property="og:image:alt" content="{{ exifInfo.data[0].Description }}" />
+        <meta property="og:image:alt" content="{{ exifInfo.data[0].Description }}"/>
     {% endif %}
     <!-- Métadonnées Twitter -->
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:site" content=""/>
     {% if  exifInfo.data[0].Creator %}
-    <meta name="twitter:creator"  content="{{ exifInfo.data[0].Creator }}"/>
+        <meta name="twitter:creator" content="{{ exifInfo.data[0].Creator }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Title %}
-    <meta name="twitter:title" content="{{ exifInfo.data[0].Title }}"/>
+        <meta name="twitter:title" content="{{ exifInfo.data[0].Title }}"/>
     {% endif %}
     {% if  exifInfo.data[0].Description %}
-    <meta name="twitter:description" content="{{ exifInfo.data[0].Description }}" />
+        <meta name="twitter:description" content="{{ exifInfo.data[0].Description }}"/>
     {% endif %}
     <meta name="twitter:image" content="{{ app_url ~ exifInfo.data[0].SourceFile }}">
 
@@ -66,14 +66,47 @@
 
 {% block css %}
     <link rel="stylesheet" href="/public/css/pages/error.css" type="text/css">
+    {% block css %}
+        <link rel="stylesheet" href="/public/css/columns-masonry.css">
+        <link rel="stylesheet" href="/public/css/pages/detail.css">
+    {% endblock %}
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/public/js/flickrModal.js"></script>
 {% endblock %}
 
 {% block body %}
 
-    <div class="fixed-spread bg-orange">
-        <h1>modal</h1>
 
-
+    <div id="modalContainerFlickr" class="fixed-spread bg-yin-opac-9 hide">
+        <div class="row flex-x-center margin-50-top">
+            <div class="cell-6-margin-0 c-8-l c-10-m">
+                <div class="row flex-x-center flex-y-center bg-yang ">
+                    <div class="cell-10-margin-0">
+                        <h1 class="padding margin-0">
+                            Images from Flickr
+                        </h1>
+                    </div>
+                    <div class="cell-2-margin-0 align-right">
+                        <span class="modalFlickrActivator cursor-pointer hover-color-alizarin txt-size-small txt-b margin-15-right"
+                              title="Close">&#9587</span>
+                    </div>
+                </div>
+                <div id="modalFlickr" class="bg-yang">
+                    <ul class="columns-masonry">
+                        {% for image in images %}
+                            <li>
+                                <figure>
+                                    <img class="responsive-img" src="{{ image.url }}"
+                                         alt="Image from Flickr number {{ loop.index }}"/>
+                                </figure>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <main>
@@ -113,7 +146,7 @@
                                    href="/{{ exifInfo.data[0].SourceFile }}"
                                    class="inline-block color-peter-river hover-color-turquoise"
                                    title="Téléchargez l'image">
-                                    <img class="responsive-img hide-xs" src="../public/icons/image.png"
+                                    <img class="responsive-img hide-xs" src="../public/icons/download.png"
                                          alt="Icon Téléchargement"/>
                                     <span class="margin-15-left margin-0-xs">Télécharger l'image</span>
                                 </a>
@@ -127,6 +160,14 @@
                                          alt="Icon Téléchargement"/>
                                     <span class="margin-15-left margin-0-xs">Télécharger le fichier sidecar XMP</span>
                                 </a>
+                            </li>
+                            <li class="padding">
+                                <span class="modalFlickrActivator cursor-pointer inline-block color-peter-river hover-color-turquoise"
+                                      title="Plus d'images sur Flickr">
+                                    <img class="responsive-img hide-xs" src="../public/icons/image.png"
+                                         alt="Icon Flickr Images"/>
+                                    <span class="margin-15-left margin-0-xs">Plus d'images sur Flickr</span>
+                                </span>
                             </li>
                         </ul>
                     </div>
