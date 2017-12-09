@@ -125,15 +125,15 @@
             </section>
         {% else %}
             {# SUCCESS CASE #}
-            <div class="row-column-reverse-xl flex-y-center">
-                <div class="cell-5 bg-yang padding-30-s anim-fall">
+            <div class="row-column-reverse-xl flex-y-center flex-y-stretch-xl">
+                <div class="cell-5 bg-yang anim-fall">
                     <div>
                         <a href="/" title="Retour à l'accueil"
                            class="color-amethyst txt-size-big  border-bottom border-transparent hover-border-bottom transition-2">
                             <span>&#8592;</span>
                         </a>
                     </div>
-                    <div class="padding-50">
+                    <div class="padding-50 padding-m">
                         <h2 class="margin-0-top txt-unset color-amethyst txt-size-big align-center-s">
                             {{ exifInfo.data[0].Title ?: "* Titre *" }}
                         </h2>
@@ -198,7 +198,7 @@
                     <h2 class="margin-0-top margin-50-bottom txt-capitalize align-center">métadonnées</h2>
                     <ul class="list-unstyled txt-over-breakline">
                         {% for metadataKey, metadataValue in exifInfo.data[0] %}
-                            <li class="padding">
+                            <li class="margin-bottom">
                                 <span class="txt-b">{{ metadataKey }}</span>
                                 <span>: {{ metadataValue }}</span>
                             </li>

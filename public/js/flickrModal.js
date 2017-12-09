@@ -10,5 +10,4 @@ window.addEventListener("load", function () {
       }
     })
   }
-
 })
