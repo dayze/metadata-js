@@ -73,7 +73,7 @@ app.get('/detail/:id', (req, res) => {
     flicker.searchByTag(exifInfo.data[0].Title).then((images) => {
       return {images, exifInfo}
     }).then(({images, exifInfo}) => {
-      Object.keys(exifInfo).length !== 0 ? res.render('detail', { // Désolé pour le ternaire. Enlevez pas des points PLZ :)
+      Object.keys(exifInfo).length !== 0 ? res.render('detail', { // Désolé pour le ternaire.
         exifInfo,
         images,
         app_url: req.protocol + '://' + req.headers.host + '/',
